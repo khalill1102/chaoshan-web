@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文创周边 - 潮韵·嵌瓷</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">潮韵·嵌瓷</div>
+        <div class="menu">
+            <a href="index.html">嵌瓷介绍</a>
+            <a href="products.html" class="active">文创周边</a>
+            <a href="game.html" >互动游戏</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>非遗-嵌瓷文创周边</h1>
+        <p>让传统技艺，走进大众，散发新的魅力</p>
+    </header>
+
+    <main class="products-container">
+        
+        <section class="featured-product">
+            <div class="featured-img">
+                <img src="images/creative.jpg" alt="罗小黑嵌瓷">
+            </div>
+            <div class="featured-info">
+                <div class="tag">年度爆款 · 跨界创新</div>
+                <h2>嵌瓷 × 罗小黑战记 联名款</h2>
+                <p>当古老的大寮嵌瓷技艺，遇上治愈系国漫《罗小黑》。传承人许令余打破次元壁，用瓷片拼贴出灵动的二次元形象。</p>
+                <div class="price">¥ 暂无定价 (仅展示)</div>
+                <button class="btn-buy" onclick="openModal('罗小黑', '展示品', 'images/creative.jpg', '这是许令余的创新尝试，将嵌瓷技艺与年轻人喜爱的卡通形象结合，本作目前仅作非遗创新展示，不用于商业售卖。')">查看详情</button>
+            </div>
+        </section>
+
+        <div class="section-title">
+            <h3>文创作品 · 伴手礼</h3>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card" onclick="openModal('作品一', '¥ 398.00', 'images/creative1.jpg', '这里是写介绍的地方qwq')">
+                <div class="card-img">
+                    <img src="images/creative1.jpg" alt="作品一">
+                </div>
+                <div class="card-text">
+                    <h4>作品一</h4>
+                    <div class="card-bottom">
+                        <span class="card-price">¥ 398</span>
+                        <span class="buy-icon">👉</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openModal('作品二', '¥ 1280.00', 'images/creative2.jpg', '哈基米南北绿队')">
+                <div class="card-img">
+                    <img src="images/creative2.jpg" alt="作品二">
+                </div>
+                <div class="card-text">
+                    <h4>作品二</h4>
+                    <div class="card-bottom">
+                        <span class="card-price">¥ 1280</span>
+                        <span class="buy-icon">👉</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openModal('作品3', '¥ 500起', 'images/creative3.jpg', '支持定制！！！qwq')">
+                <div class="card-img">
+                    <img src="images/creative3.jpg" alt="作品3">
+                </div>
+                <div class="card-text">
+                    <h4>作品三</h4>
+                    <div class="card-bottom">
+                        <span class="card-price">¥ 500起</span>
+                        <span class="buy-icon">👉</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img id="m-img" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <h2 id="m-title">商品标题</h2>
+                    <div class="price-tag" id="m-price">¥ 0</div>
+                    <div class="divider"></div>
+                    <p id="m-desc">这里是商品详细介绍...</p>
+                    <div class="modal-actions">
+                        <a href="#" class="btn-primary">立即购买 / 联系定制</a>
+                        <p class="note">*跳转至淘宝店铺或微信客服</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
