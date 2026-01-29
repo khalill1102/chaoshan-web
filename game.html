@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互动游戏 - 潮韵·嵌瓷</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">潮韵·嵌瓷</div>
+        <div class="menu">
+            <a href="index.html">嵌瓷介绍</a>
+            <a href="products.html">文创周边</a>
+            <a href="game.html" class="active">互动游戏</a>
+        </div>
+    </nav>
+
+    <main class="game-wrapper">
+        
+        <div id="scene-start" class="game-scene active">
+            <div class="title-box">
+                <h1>嵌瓷传承模拟器</h1>
+                <p>技艺坚守 · 时代博弈 · 文化传承</p>
+                <div class="intro">
+                    你将扮演一位嵌瓷匠人，在传统与现代的碰撞中，决定这门技艺是隐匿于时光，还是焕发新生走向世界。
+                </div>
+                <button class="btn-start" onclick="goToScene('scene-role')">开始传承之旅</button>
+            </div>
+        </div>
+
+        <div id="scene-role" class="game-scene">
+            <h2>请选择你的出身</h2>
+            <div class="role-container">
+                <div class="role-card" onclick="startGame('heir')">
+                    <div class="role-icon">🏠</div>
+                    <h3>百年老字号传人</h3>
+                    <p class="role-desc">家族底蕴深厚，但也受祖训束缚。</p>
+                    <ul class="role-stats">
+                        <li>名望: <span class="high">高</span></li>
+                        <li>家底: <span class="medium">中</span></li>
+                        <li>创新: <span class="low">低</span></li>
+                    </ul>
+                    <div class="role-buff">天赋：古法传人</div>
+                </div>
+
+                <div class="role-card" onclick="startGame('mason')">
+                    <div class="role-icon">🔨</div>
+                    <h3>流浪泥水匠</h3>
+                    <p class="role-desc">指力惊人，常年在街头巷尾修补。</p>
+                    <ul class="role-stats">
+                        <li>指力: <span class="high">极高</span></li>
+                        <li>眼界: <span class="low">低</span></li>
+                        <li>家底: <span class="low">低</span></li>
+                    </ul>
+                    <div class="role-buff">天赋：街头铰瓷</div>
+                </div>
+
+                <div class="role-card" onclick="startGame('student')">
+                    <div class="role-icon">🎨</div>
+                    <h3>外籍美术留学生</h3>
+                    <p class="role-desc">拥有现代审美，但不懂民俗禁忌。</p>
+                    <ul class="role-stats">
+                        <li>构思: <span class="high">极高</span></li>
+                        <li>民俗: <span class="low">无</span></li>
+                        <li>眼界: <span class="medium">中</span></li>
+                    </ul>
+                    <div class="role-buff">天赋：跨文化融合</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="scene-main" class="game-scene">
+            <div class="dashboard-left">
+                <div class="profile-box">
+                    <div class="avatar" id="player-avatar">🏠</div>
+                    <div class="player-info">
+                        <h3 id="player-name">百年传人</h3>
+                        <div class="status-badge">第 <span id="turn-count">1</span> 年</div>
+                    </div>
+                </div>
+                
+                <div class="stats-box">
+                    <h4>显性能力</h4>
+                    <div class="stat-item">
+                        <span>指力 (铰瓷)</span>
+                        <div class="progress-bar"><div class="fill" id="stat-finger" style="width: 40%"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <span>眼界 (选瓷)</span>
+                        <div class="progress-bar"><div class="fill" id="stat-vision" style="width: 50%"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <span>构思 (嵌贴)</span>
+                        <div class="progress-bar"><div class="fill" id="stat-idea" style="width: 30%"></div></div>
+                    </div>
+                    
+                    <h4 style="margin-top: 20px;">隐性特质</h4>
+                    <div class="stat-row">
+                        <span>❤️ 匠心: <b id="val-heart">45</b></span>
+                        <span>⭐ 名望: <b id="val-fame">65</b></span>
+                    </div>
+                    <div class="stat-row" style="color: var(--primary-color);">
+                        <span>🔥 传承值: <b id="val-inherit">0</b></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-right">
+                <div class="event-log" id="game-log">
+                    <div class="log-item system">游戏开始。你出生于潮汕嵌瓷世家，祖辈的教诲犹在耳畔...</div>
+                </div>
+
+                <div class="action-area">
+                    <div class="action-group">
+                        <div class="group-title">学 · 技艺</div>
+                        <button onclick="doAction('study_basic')">基础练习</button>
+                        <button onclick="doAction('study_folk')">研读民俗</button>
+                    </div>
+                    <div class="action-group">
+                        <div class="group-title">创 · 作品</div>
+                        <button onclick="doAction('create_small')">接小订单</button>
+                        <button onclick="doAction('create_master')" class="highlight">创作宗祠作品</button>
+                    </div>
+                    <div class="action-group">
+                        <div class="group-title">传 · 文化 </div>
+                        <button onclick="doAction('teach')">收徒传艺</button>
+                        <button onclick="doAction('exhibit')">非遗展出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="game.js"></script>
+</body>
+</html>
