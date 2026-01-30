@@ -83,44 +83,36 @@
                 </div>
                 
                 <div class="stats-box">
-    <h4>显性能力</h4>
-    <div class="stat-item">
-        <span>💪 指力 (铰瓷)</span>
-        <div class="progress-bar"><div class="fill" id="stat-finger" style="width: 0%"></div></div>
-    </div>
-    <div class="stat-item">
-        <span>👁️ 眼界 (选瓷)</span>
-        <div class="progress-bar"><div class="fill" id="stat-vision" style="width: 0%"></div></div>
-    </div>
-    <div class="stat-item">
-        <span>🧠 构思 (嵌贴)</span>
-        <div class="progress-bar"><div class="fill" id="stat-idea" style="width: 0%"></div></div>
-    </div>
-    <div class="stat-item">
-        <span>📜 民俗 (古法)</span>
-        <div class="progress-bar"><div class="fill" id="stat-knowledge" style="width: 0%"></div></div>
-    </div>
-    
-    <h4 style="margin-top: 20px;">隐性特质</h4>
-    <div class="stat-row">
-        <span>❤️ 匠心: <b id="val-heart">0</b></span>
-        <span>⭐ 名望: <b id="val-fame">0</b></span>
-    </div>
-    <div class="stat-row">
-        <span>💰 家底: <b id="val-wealth">0</b></span>
-    </div>
-    <div class="stat-row" style="color: var(--primary-color);">
-        <span>🔥 传承值: <b id="val-inherit">0</b></span>
-    </div>
-</div>
-
-<div id="event-modal" class="modal hidden">
-    <div class="modal-content">
-        <h3 id="modal-title">事件标题</h3>
-        <p id="modal-desc">事件描述内容...</p>
-        <button onclick="closeModal()">确定</button>
-    </div>
-</div>
+                    <h4>显性能力</h4>
+                    <div class="stat-item">
+                        <span>💪 指力 (铰瓷)</span>
+                        <div class="progress-bar"><div class="fill" id="stat-finger" style="width: 0%"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <span>👁️ 眼界 (选瓷)</span>
+                        <div class="progress-bar"><div class="fill" id="stat-vision" style="width: 0%"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <span>🧠 构思 (嵌贴)</span>
+                        <div class="progress-bar"><div class="fill" id="stat-idea" style="width: 0%"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <span>📜 民俗 (古法)</span>
+                        <div class="progress-bar"><div class="fill" id="stat-knowledge" style="width: 0%"></div></div>
+                    </div>
+                    
+                    <h4 style="margin-top: 20px;">隐性特质</h4>
+                    <div class="stat-row">
+                        <span>❤️ 匠心: <b id="val-heart">0</b></span>
+                        <span>⭐ 名望: <b id="val-fame">0</b></span>
+                    </div>
+                    <div class="stat-row">
+                         <span>💰 家底: <b id="val-wealth">0</b></span>
+                    </div>
+                    <div class="stat-row" style="color: var(--primary-color);">
+                        <span>🔥 传承值: <b id="val-inherit">0</b></span>
+                    </div>
+                </div>
             </div>
 
             <div class="dashboard-right">
@@ -140,7 +132,7 @@
                         <button onclick="doAction('create_master')" class="highlight">创作宗祠作品</button>
                     </div>
                     <div class="action-group">
-                        <div class="group-title">传 · 文化 </div>
+                        <div class="group-title">传 · 文化</div>
                         <button onclick="doAction('teach')">收徒传艺</button>
                         <button onclick="doAction('exhibit')">非遗展出</button>
                     </div>
@@ -149,6 +141,14 @@
         </div>
 
     </main>
+
+    <div id="event-modal" class="game-modal hidden">
+        <div class="game-modal-content">
+            <h3 id="modal-title">事件标题</h3>
+            <p id="modal-desc">事件描述内容...</p>
+            <button onclick="document.getElementById('event-modal').classList.add('hidden')" style="padding: 8px 20px; background: #8b0000; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 15px;">确定</button>
+        </div>
+    </div>
 
     <script src="game.js"></script>
 </body>
