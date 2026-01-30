@@ -1,16 +1,18 @@
+// 游戏全局状态
 let gameState = {
     role: '',
     year: 1,
     maxYears: 20,
+    isGameOver: false, 
     stats: {
-        finger: 0,
-        vision: 0,
-        idea: 0,
-        knowledge: 0,
-        heart: 0,
-        fame: 0,
-        inherit: 0,
-        wealth: 0
+        finger: 0,    
+        vision: 0,    
+        idea: 0,      
+        knowledge: 0, 
+        heart: 0,     
+        fame: 0,      
+        inherit: 0,   
+        wealth: 0     
     }
 };
 
@@ -56,12 +58,14 @@ function showModal(title, desc) {
 function closeModal() {
     const modal = document.getElementById('event-modal');
     if(modal) modal.classList.add('hidden');
+    
     checkGameStatus();
 }
 
 function updateDashboardUI() {
     const s = gameState.stats;
     
+
     const setWidth = (id, val) => {
         const el = document.getElementById(id);
         if(el) el.style.width = Math.min(Math.max(val, 0), 100) + '%';
@@ -95,12 +99,15 @@ function addLog(text, type = "normal") {
     logBox.prepend(div);
 }
 
+// 开始游戏初始化
 function startGame(roleKey) {
     gameState.role = roleKey;
     gameState.year = 1;
+    gameState.isGameOver = false;
     gameState.stats = { ...roles[roleKey].stats };
 
     const role = roles[roleKey];
+    
     const nameEl = document.getElementById('player-name');
     const avatarEl = document.getElementById('player-avatar');
     if(nameEl) nameEl.innerText = role.name;
@@ -114,11 +121,18 @@ function startGame(roleKey) {
     addLog("需平衡【家底】与【传承】，切记：无家底难买好瓷，无民俗难入宗祠。", "highlight");
 
     updateDashboardUI();
+
+    const actionArea = document.querySelector('.action-area');
+    if(actionArea) {
+        actionArea.style.pointerEvents = 'auto';
+        actionArea.style.opacity = '1';
+    }
+
     goToScene('scene-main');
 }
 
 function doAction(actionType) {
-    if (gameState.year > gameState.maxYears) return;
+    if (gameState.isGameOver) return;
 
     const s = gameState.stats;
     let msg = "";
@@ -126,120 +140,111 @@ function doAction(actionType) {
     let modalDesc = "";
     let cost = 0;
     
-    const currentYear = gameState.year;
+    if (actionType === 'study_basic') {
+        cost = 2;
+        if(s.wealth < cost) {
+            showModal("囊中羞涩", "连最便宜的练手瓷片都买不起了，先去接点小活赚钱吧。");
+            return; 
+        }
+        s.wealth -= cost;
+        s.finger += 8; 
+        s.heart += 3;
+        msg = "闭关苦练铰瓷，指尖满是伤痕，但技艺精进。";
+        
+        if(s.finger < 30 && Math.random() < 0.2) {
+            s.finger = Math.max(0, s.finger - 5);
+            modalTitle = "意外划伤";
+            modalDesc = "操作不当，瓷片划伤了手掌，修养导致指力暂时下降。";
+            showModal(modalTitle, modalDesc);
+        }
+    }
+    
+    else if (actionType === 'study_folk') {
+        s.knowledge += 10; 
+        s.vision += 5;
+        msg = "走访村中老人，记录下关于“龙凤仪态”的口诀。";
+    }
 
-    switch(actionType) {
-        case 'study_basic': 
-            cost = 2;
-            if(s.wealth < cost) {
-                showModal("囊中羞涩", "连最便宜的练手瓷片都买不起了，先去接点小活赚钱吧。");
-                return; 
-            }
-            s.wealth -= cost;
-            s.finger += 8; 
-            s.heart += 3;
-            msg = "闭关苦练铰瓷，指尖满是伤痕，但技艺精进。";
-            
-            if(s.finger < 30 && Math.random() < 0.2) {
-                s.finger = Math.max(0, s.finger - 5);
-                modalTitle = "意外划伤";
-                modalDesc = "操作不当，瓷片划伤了手掌，修养导致指力暂时下降。";
-                showModal(modalTitle, modalDesc);
-            }
-            break;
-            
-        case 'study_folk': 
-            s.knowledge += 10; 
-            s.vision += 5;
-            msg = "走访村中老人，记录下关于“龙凤仪态”的口诀。";
-            break;
+    else if (actionType === 'create_small') {
+        if(s.finger >= 20) {
+            let income = Math.floor(10 + s.fame * 0.1);
+            s.wealth += income; 
+            s.fame += 2; 
+            s.finger += 1;
+            msg = `承接民居屋脊修缮，赚取了 ${income} 家底。`;
+        } else {
+            s.wealth -= 2;
+            s.fame -= 3;
+            modalTitle = "搞砸了";
+            modalDesc = "指力不足，剪出的瓷片参差不齐，被雇主嫌弃，赔了点材料费。";
+            showModal(modalTitle, modalDesc);
+        }
+    }
 
-        case 'create_small': 
-            if(s.finger >= 20) {
-                let income = Math.floor(10 + s.fame * 0.1);
-                s.wealth += income; 
-                s.fame += 2; 
-                s.finger += 1;
-                msg = `承接民居屋脊修缮，赚取了 ${income} 家底。`;
-            } else {
-                s.wealth -= 2;
-                s.fame -= 3;
-                modalTitle = "搞砸了";
-                modalDesc = "指力不足，剪出的瓷片参差不齐，被雇主嫌弃，赔了点材料费。";
-                showModal(modalTitle, modalDesc);
-            }
-            break;
-
-        case 'create_master': 
-            cost = 30;
-            if(s.wealth < cost) {
-                showModal("资金不足", `创作宗祠级作品需要顶级胎骨和颜料，至少需要 ${cost} 家底。<br>当前仅有: ${s.wealth}`);
-                return;
-            }
-            
-            s.wealth -= cost;
-
-            let successRate = (s.finger * 0.4) + (s.knowledge * 0.4) + (s.vision * 0.2);
-            let roll = (Math.random() * 100) - 10; 
-
-            if(successRate > roll) {
-                let reward = 50;
-                s.fame += 25; 
-                s.inherit += 10; 
-                s.wealth += reward; 
-                s.heart += 10;
-                msg = "宗祠作品惊艳全村！";
-                modalTitle = "神来之笔";
-                modalDesc = `你对传统禁忌的把控（民俗 ${s.knowledge}）与精湛工艺（指力 ${s.finger}）完美融合。<br>族老们一致认可，名望大涨！`;
-                showModal(modalTitle, modalDesc);
-            } else {
-                s.fame -= 15; 
-                s.heart -= 10;
-                msg = "宗祠作品引发争议，损失惨重。";
-                modalTitle = "技艺未到";
-                modalDesc = "虽然投入重金，但作品因“造型呆板”或“触犯纹样禁忌”被拒收。<br>材料费打了水漂，名望受损。";
-                showModal(modalTitle, modalDesc);
-            }
-            break;
-
-        case 'teach': 
-            if(s.fame > 50 && s.knowledge > 40) {
-                s.inherit += 15; 
-                s.fame += 5;
-                s.wealth -= 5;
-                msg = "开门收徒，将平生所学倾囊相授。";
-            } else {
-                showModal("无人拜师", "你的名望不足，或者对民俗典故知之甚少（民俗知识<40），<br>无法让年轻人信服。");
-                return;
-            }
-            break;
-
-        case 'exhibit': 
-            cost = 15;
-            if(s.inherit > 20 && s.wealth >= cost) {
-                s.wealth -= cost;
-                s.fame += 20; 
-                s.vision += 15;
-                msg = "前往省城参加非遗展，虽然花销不少，但大开眼界。";
-            } else {
-                showModal("条件未达", "参展需要一定的作品积累（传承值>20），且需支付差旅费。");
-                return;
-            }
-            break;
-            
-        default:
-            console.error("未知行动类型");
+    else if (actionType === 'create_master') {
+        cost = 30;
+        if(s.wealth < cost) {
+            showModal("资金不足", `创作宗祠级作品需要顶级胎骨和颜料，至少需要 ${cost} 家底。<br>当前仅有: ${s.wealth}`);
             return;
+        }
+        
+        s.wealth -= cost;
+
+        let successRate = (s.finger * 0.4) + (s.knowledge * 0.4) + (s.vision * 0.2);
+        let roll = (Math.random() * 100) - 10; 
+
+        if(successRate > roll) {
+            let reward = 50;
+            s.fame += 25; 
+            s.inherit += 10; 
+            s.wealth += reward; 
+            s.heart += 10;
+            msg = "宗祠作品惊艳全村！";
+            modalTitle = "神来之笔";
+            modalDesc = `你对传统禁忌的把控（民俗 ${s.knowledge}）与精湛工艺（指力 ${s.finger}）完美融合。<br>族老们一致认可，名望大涨！`;
+            showModal(modalTitle, modalDesc);
+        } else {
+            s.fame -= 15; 
+            s.heart -= 10;
+            msg = "宗祠作品引发争议，损失惨重。";
+            modalTitle = "技艺未到";
+            modalDesc = "虽然投入重金，但作品因“造型呆板”或“触犯纹样禁忌”被拒收。<br>材料费打了水漂，名望受损。";
+            showModal(modalTitle, modalDesc);
+        }
+    }
+
+    else if (actionType === 'teach') {
+        if(s.fame > 50 && s.knowledge > 40) {
+            s.inherit += 15; 
+            s.fame += 5;
+            s.wealth -= 5; 
+            msg = "开门收徒，将平生所学倾囊相授。";
+        } else {
+            showModal("无人拜师", "你的名望不足，或者对民俗典故知之甚少（民俗知识<40），<br>无法让年轻人信服。");
+            return;
+        }
+    }
+
+    else if (actionType === 'exhibit') {
+        cost = 15;
+        if(s.inherit > 20 && s.wealth >= cost) {
+            s.wealth -= cost;
+            s.fame += 20; 
+            s.vision += 15;
+            msg = "前往省城参加非遗展，虽然花销不少，但大开眼界。";
+        } else {
+            showModal("条件未达", "参展需要一定的作品积累（传承值>20），且需支付差旅费。");
+            return;
+        }
+    } else {
+        console.error("未知行动类型");
+        return;
     }
 
     gameState.year++;
 
     for(let key in s) {
-        if(key === 'inherit') {
-             if(s[key] > 100) s[key] = 100;
-        } else {
-             if(s[key] > 100) s[key] = 100;
-        }
+        if(s[key] > 100) s[key] = 100;
         if(s[key] < 0) s[key] = 0;
     }
 
@@ -247,13 +252,23 @@ function doAction(actionType) {
     updateDashboardUI();
 }
 
+
 function checkGameStatus() {
+    if (gameState.isGameOver) return;
+
     const s = gameState.stats;
 
-    if(s.wealth <= 0 && gameState.year > 3) {
+    if(s.wealth <= 0 && gameState.year < gameState.maxYears) {
+        addLog("【家底耗尽】你不得不去工地搬砖维持生计，荒废了一年时光。", "highlight")
+        gameState.year++;
+        s.finger = Math.max(0, s.finger - 2);
+        s.wealth += 5; 
+        updateDashboardUI();
     }
 
     if(gameState.year > gameState.maxYears) {
+        gameState.isGameOver = true; // 标记游戏结束
+        
         let endingTitle = "";
         let endingDesc = "";
         
@@ -269,7 +284,13 @@ function checkGameStatus() {
         }
 
         showModal(endingTitle, endingDesc);
-        document.querySelector('.action-area').style.pointerEvents = 'none';
-        document.querySelector('.action-area').style.opacity = '0.5';
+        
+        const actionArea = document.querySelector('.action-area');
+        if(actionArea) {
+            actionArea.style.pointerEvents = 'none';
+            actionArea.style.opacity = '0.5';
+        }
+        
+        addLog("【游戏结束】请刷新页面重新开始。", "highlight");
     }
 }
