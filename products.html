@@ -3,107 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文创周边 - 潮韵·嵌瓷</title>
+    <title>文创商城 - 潮韵·数字非遗</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .points-badge {
+            background: #ff4b1f; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8em; margin-left: 5px;
+        }
+        .category-header {
+            margin: 40px 0 20px; border-left: 5px solid #00e5ff; padding-left: 15px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .custom-zone {
+            background: #f8f9fa; border: 1px dashed #999; border-radius: 10px; padding: 30px; display: flex; gap: 30px; align-items: center; margin-bottom: 50px;
+        }
+        .upload-box {
+            flex: 1; height: 200px; background: white; border: 2px dashed #ddd; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s;
+        }
+        .upload-box:hover { border-color: #00e5ff; background: #f0faff; }
+        .custom-controls { flex: 2; }
+        .discount-tag {
+            display: inline-block; background: #fff0f0; color: #ff4b1f; border: 1px solid #ff4b1f; font-size: 0.7em; padding: 0 4px; border-radius: 4px; margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo">潮韵·嵌瓷</div>
         <div class="menu">
-            <a href="index.html">嵌瓷介绍</a>
-            <a href="products.html" class="active">文创周边</a>
-            <a href="game.html" >互动游戏</a>
+            <a href="index.html">主页</a>
+            <a href="products.html" class="active">文创商城</a>
+            <a href="game.html">互动游戏</a>
+        </div>
+        <div class="user-status" style="color: #333; font-size: 0.9em;">
+            <span>我的积分: <strong style="color:#ff4b1f">120</strong></span>
         </div>
     </nav>
 
-    <header class="page-header">
-        <h1>非遗-嵌瓷文创周边</h1>
-        <p>让传统技艺，走进大众，散发新的魅力</p>
+    <header class="page-header" style="background: url('images/shop-bg.jpg') center/cover; color: white; padding: 60px 20px; text-align: center;">
+        <h1 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">非遗文创平台</h1>
+        <p style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">游戏积分当钱花 · 大师孤品 · 私人定制</p>
     </header>
 
-    <main class="products-container">
+    <main class="products-container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
         
-        <section class="featured-product">
-            <div class="featured-img">
-                <img src="images/creative.jpg" alt="罗小黑嵌瓷">
-            </div>
-            <div class="featured-info">
-                <div class="tag">年度爆款 · 跨界创新</div>
-                <h2>嵌瓷 × 罗小黑战记 联名款</h2>
-                <p>当古老的大寮嵌瓷技艺，遇上治愈系国漫《罗小黑》。传承人许令余打破次元壁，用瓷片拼贴出灵动的二次元形象。</p>
-                <div class="price">¥ 暂无定价 (仅展示)</div>
-                <button class="btn-buy" onclick="openModal('罗小黑', '展示品', 'images/creative.jpg', '这是许令余的创新尝试，将嵌瓷技艺与年轻人喜爱的卡通形象结合，本作目前仅作非遗创新展示，不用于商业售卖。')">查看详情</button>
-            </div>
-        </section>
-
-        <div class="section-title">
-            <h3>文创作品 · 伴手礼</h3>
+        <div class="category-header">
+            <h3>🎨 没玩够？带回家自己拼 </h3>
+            <span style="font-size:0.9em; color:#666;">支持游戏积分抵扣</span>
         </div>
 
-        <div class="product-grid">
-            <div class="product-card" onclick="openModal('作品一', '¥ 398.00', 'images/creative1.jpg', '这里是写介绍的地方qwq')">
-                <div class="card-img">
-                    <img src="images/creative1.jpg" alt="作品一">
-                </div>
+        <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="product-card" onclick="openModal('初学者材料包', '¥ 58.00', 'images/diy-kit1.jpg', '含：基础瓷片包+粘合剂+视频教程。适合亲子互动。')">
+                <div class="card-img"><img src="images/diy-kit1.jpg" alt="初学者包"></div>
                 <div class="card-text">
-                    <h4>作品一</h4>
+                    <h4>入门级 · 嵌瓷体验包</h4>
+                    <div class="discount-tag">🔥 积分可抵 ¥10</div>
                     <div class="card-bottom">
-                        <span class="card-price">¥ 398</span>
-                        <span class="buy-icon">👉</span>
+                        <span class="card-price">¥ 58.00</span>
+                        <span class="buy-icon">➕</span>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card" onclick="openModal('作品二', '¥ 1280.00', 'images/creative2.jpg', '哈基米南北绿队')">
-                <div class="card-img">
-                    <img src="images/creative2.jpg" alt="作品二">
-                </div>
+            <div class="product-card" onclick="openModal('罗小黑联名包', '¥ 88.00', 'images/creative.jpg', '正版授权！内含罗小黑专属配色瓷片。')">
+                <div class="card-img"><img src="images/creative.jpg" alt="罗小黑包"></div>
                 <div class="card-text">
-                    <h4>作品二</h4>
+                    <h4>罗小黑 × 非遗联名款</h4>
+                    <div class="discount-tag">积分可抵 ¥15</div>
                     <div class="card-bottom">
-                        <span class="card-price">¥ 1280</span>
-                        <span class="buy-icon">👉</span>
+                        <span class="card-price">¥ 88.00</span>
+                        <span class="buy-icon">➕</span>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card" onclick="openModal('作品3', '¥ 500起', 'images/creative3.jpg', '支持定制！！！qwq')">
-                <div class="card-img">
-                    <img src="images/creative3.jpg" alt="作品3">
-                </div>
+            <div class="product-card" onclick="openModal('专业工具箱', '¥ 128.00', 'images/tools.jpg', '资深大师同款工具箱，供想系统性学习嵌瓷工艺的人使用')">
+                <div class="card-img"><img src="images/tools.jpg" alt="工具箱"></div>
                 <div class="card-text">
-                    <h4>作品三</h4>
+                    <h4>进阶 · 匠人工具箱</h4>
                     <div class="card-bottom">
-                        <span class="card-price">¥ 500起</span>
-                        <span class="buy-icon">👉</span>
+                        <span class="card-price">¥ 128.00</span>
+                        <span class="buy-icon">➕</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="category-header">
+            <h3>🛠️ C2M 智能定制 </h3>
+            <span style="font-size:0.9em; color:#666;">上传图片 -> AI生成图纸 -> 大师制作</span>
+        </div>
+
+        <div class="custom-zone">
+            <div class="upload-box" onclick="alert('模拟：打开文件选择器')">
+                <div style="font-size: 3em; color:#ddd;">+</div>
+                <p style="color:#999;">点击上传您的图片<br>(风景/宠物/Logo)</p>
+            </div>
+            <div class="custom-controls">
+                <h4 style="margin-bottom: 15px;">定制参数配置</h4>
+                <form onsubmit="event.preventDefault(); openModal('私人定制订单', '¥ 待估价', 'images/custom-preview.jpg', '系统已接收您的需求，AI正在拆解图纸...')">
+                    <div style="margin-bottom: 10px;">
+                        <label>选择尺寸：</label>
+                        <select style="padding: 5px;"><option>桌面摆件 (20cm)</option><option>挂屏 (50cm)</option><option>大型户外观赏 (1m+)</option></select>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label>工艺级别：</label>
+                        <select style="padding: 5px;"><option>普通学徒工 (高性价比)</option><option>资深匠人 (推荐)</option><option>许少雄大师亲制 (收藏级)</option></select>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label>预算范围：</label>
+                        <input type="range" style="vertical-align: middle;"> <span style="font-size:0.8em; color:#666;">¥500 - ¥50000</span>
+                    </div>
+                    <button class="btn-primary" style="width: 200px;">🤖 生成AI效果预览</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="category-header">
+            <h3>🏆 大师亲制孤品 （下单后开始制作）</h3>
+        </div>
+
+        <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="product-card" onclick="openModal('《秋曦》挂屏', '¥ 12,800', 'images/qiuxi.jpg', '许少雄大师亲制。')">
+                <div class="card-img"><img src="images/qiuxi.jpg" alt="双凤"></div>
+                <div class="card-text">
+                    <h4>《秋曦》</h4>
+                    <div class="discount-tag" style="border-color:gold; background:#fffdf0; color:#b8860b;">大师亲签证书</div>
+                    <div class="card-bottom">
+                        <span class="card-price">¥ 12,800</span>
+                        <span class="buy-icon">💎</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openModal('《八宝与狄青》摆件', '¥ 6,600', 'images/babao.jpg', '经典历史人物造型，立体浮雕工艺。')">
+                <div class="card-img"><img src="images/babao.jpg" alt="戏文"></div>
+                <div class="card-text">
+                    <h4>立体摆件 · 八宝与狄青</h4>
+                    <div class="card-bottom">
+                        <span class="card-price">¥ 6,600</span>
+                        <span class="buy-icon">💎</span>
+                    </div>
+                </div>
+            </div>
+             <div class="product-card" onclick="openModal('王者之凤', '¥ 3,200', 'images/wangzhe.jpg', '适合现代家居装饰，寓意富贵吉祥。')">
+                <div class="card-img"><img src="images/wangzhe.jpg" alt="花鸟"></div>
+                <div class="card-text">
+                    <h4>家居系列 · 王者之凤</h4>
+                    <div class="card-bottom">
+                        <span class="card-price">¥ 3,200</span>
+                        <span class="buy-icon">💎</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-body">
-                <div class="modal-img">
-                    <img id="m-img" src="" alt="">
-                </div>
-                <div class="modal-info">
-                    <h2 id="m-title">商品标题</h2>
-                    <div class="price-tag" id="m-price">¥ 0</div>
-                    <div class="divider"></div>
-                    <p id="m-desc">这里是商品详细介绍...</p>
-                    <div class="modal-actions">
-                        <a href="#" class="btn-primary">立即购买 / 联系定制</a>
-                        <p class="note">*跳转至淘宝店铺或微信客服</p>
-                    </div>
+    <div id="productModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center;">
+        <div class="modal-content" style="background:white; width:80%; max-width:800px; display:flex; border-radius:10px; overflow:hidden;">
+            <span class="close-btn" onclick="closeModal()" style="position:absolute; top:20px; right:30px; font-size:30px; cursor:pointer; color:white;">&times;</span>
+            <div class="modal-img" style="flex:1; background:#f0f0f0;">
+                <img id="m-img" src="" alt="" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="modal-info" style="flex:1; padding:40px;">
+                <h2 id="m-title" style="margin-top:0;">商品标题</h2>
+                <div class="price-tag" id="m-price" style="font-size:1.5em; color:#ff4b1f; margin:10px 0;">¥ 0</div>
+                <div style="margin: 10px 0; font-size: 0.9em; color: green;">✅ 当前积分可用：120分 (可抵扣 ¥12.00)</div>
+                <div class="divider" style="height:1px; background:#eee; margin:20px 0;"></div>
+                <p id="m-desc" style="color:#666; line-height:1.6;">介绍...</p>
+                <div class="modal-actions" style="margin-top:30px;">
+                    <button class="btn-primary" style="background:#ff4b1f; color:white; border:none; padding:10px 30px; border-radius:20px; font-size:1.1em; cursor:pointer;" onclick="alert('已跳转至支付接口 (演示)')">
+                        立即购买
+                    </button>
+                    <button style="background:white; border:1px solid #ddd; padding:10px 20px; border-radius:20px; margin-left:10px; cursor:pointer;">
+                        加入购物车
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // 简单的弹窗逻辑
+        function openModal(title, price, img, desc) {
+            document.getElementById('m-title').innerText = title;
+            document.getElementById('m-price').innerText = price;
+            document.getElementById('m-img').src = img;
+            document.getElementById('m-desc').innerText = desc;
+            document.getElementById('productModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('productModal')) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
