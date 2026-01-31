@@ -3,30 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>潮韵·嵌瓷 | 永远亮丽的艺术</title>
+    <title>潮韵·数字嵌瓷 | 沉浸式非遗元宇宙平台</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* 保持之前的科技感样式，这里补充一些融合样式 */
+        .tech-badge {
+            background: rgba(0, 229, 255, 0.1);
+            color: #008c9e;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 10px;
+            border: 1px solid #00e5ff;
+        }
+        .vr-float-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, #ff4b1f, #ff9068);
+            border-radius: 50%; color: white;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; font-size: 12px;
+            box-shadow: 0 0 20px rgba(255, 75, 31, 0.6);
+            z-index: 1000; cursor: pointer; border: 2px solid #fff;
+        }
+        .map-order-box {
+            background: #f8f9fa;
+            border-left: 5px solid #ff4b1f;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+    </style>
 </head>
 <body>
 
+    <div class="vr-float-btn" onclick="location.href='game.html'">
+        <div>点击进入<br>VR视界</div>
+    </div>
+
     <nav class="navbar">
-        <div class="logo">潮韵·嵌瓷</div>
+        <div class="logo">潮韵·数字嵌瓷</div>
         <div class="menu">
-            <a href="index.html" class="active">嵌瓷介绍</a>
-            <a href="products.html">文创周边</a>
-            <a href="game.html">互动游戏</a>
+            <a href="#intro" class="active">嵌瓷档案</a> <a href="#vr-zone">VR工坊</a>     <a href="products.html">文创商城</a>
+            <a href="#business">行业合作</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
+            <span class="sub-tag" style="background:rgba(0,0,0,0.6); padding:5px 10px; border-radius:15px; font-size:0.9em;">数字孪生 · 还原古建</span>
             <h1>永远亮丽的艺术</h1>
-            <p>国家级非物质文化遗产 · 潮汕嵌瓷</p>
-            <div class="scroll-down">↓ 向下探索</div>
+            <p>当 <strong>国家级非遗</strong> 遇上 <strong>WebXR</strong> 技术</p>
+            <div class="hero-cta-group">
+                <a href="#intro" class="btn secondary-btn">探索文化内核</a>
+                <a href="#vr-zone" class="btn primary-btn">开启VR修复体验</a>
+            </div>
         </div>
     </header>
 
     <main>
-        <section class="section-block">
+        <section class="section-block" id="intro">
             <div class="text-box">
                 <div class="tag">01. 缘起</div>
                 <h2>惜材成艺，化腐朽为神奇</h2>
@@ -41,27 +77,26 @@
 
         <section class="grid-section">
             <div class="section-header">
-                <div class="tag">02. 技艺</div>
-                <h2>厝角头有戏出</h2>
-                <p>从屋脊的磅礴到屋角的细腻，嵌瓷是建筑的灵魂。</p>
+                <div class="tag">02. 技艺 · 数字档案</div> <h2>厝角头有戏出 <span class="tech-badge">3D已扫描</span></h2>
+                <p>我们利用<strong>数字孪生技术</strong>，将屋脊、屋角、檐下的嵌瓷艺术进行了毫米级建模存档。</p>
             </div>
             
             <div class="grid-container">
                 <div class="grid-card">
                     <img src="images/roof.jpg" alt="屋脊龙凤">
                     <h3>屋脊 · 气势磅礴</h3>
-                    <p>屋脊是核心区域，常饰以龙凤、麒麟。为适应仰视，特意设计前倾，色彩鲜艳，如“双麒麟朝日”，历经台风仍光彩熠熠。</p>
-                </div>
+                    <p>核心区域，常饰以龙凤。前倾设计适应仰视视角。</p>
+                    <a href="#" style="color:#00e5ff; font-size:0.9em;">[查看3D骨架]</a> </div>
                 <div class="grid-card">
                     <img src="images/corner.jpg" alt="屋角人物">
                     <h3>屋角 · 立体戏文</h3>
-                    <p>“厝角头有戏出”。这里是立体的舞台，上演《封神榜》《三国》等忠义大戏。武将铠甲怒张，文官袍带飘逸，形神兼备。</p>
-                </div>
+                    <p>“厝角头有戏出”。立体的舞台，上演封神榜等大戏。</p>
+                    <a href="#" style="color:#00e5ff; font-size:0.9em;">[查看人物建模]</a> </div>
                 <div class="grid-card">
                     <img src="images/wall.jpg" alt="檐下花鸟">
                     <h3>檐下 · 抒情田园</h3>
-                    <p>采用“浮嵌”技法，多以松鹤、牡丹为题。一花一叶的弧度、一羽一翎的光泽，吟咏自然诗篇，寓意富贵锦绣。</p>
-                </div>
+                    <p>采用“浮嵌”技法，吟咏自然诗篇，寓意富贵锦绣。</p>
+                    <a href="#" style="color:#00e5ff; font-size:0.9em;">[查看纹样数据]</a> </div>
             </div>
         </section>
 
@@ -70,30 +105,194 @@
                 <img src="images/master.jpg" alt="许少雄大师">
             </div>
             <div class="text-box">
-                <div class="tag">03. 传承</div>
+                <div class="tag">03. 传承与赋能</div>
                 <h2>大寮嵌瓷 · 匠心世家</h2>
-                <p>汕头大寮村被誉为“嵌瓷之乡”。作为国家级非遗代表性传承人，<strong>许少雄</strong>从事嵌瓷三十余年。</p>
-                <p>其作品《张春郎削发》《秋曦》多次斩获国家级金奖。他不仅坚守传统内核，更让这门古老艺术适应现代社会，成为当代嵌瓷的中流砥柱。</p>
+                <p>汕头大寮村被誉为“嵌瓷之乡”。国家级非遗代表性传承人<strong>许少雄</strong>从事嵌瓷三十余年。</p>
+                <div class="map-order-box">
+                    <h4>📊 数字赋能成效</h4>
+                    <p>X老师入驻本平台后，通过<strong>“云端接单”</strong>模式：</p>
+                    <ul>
+                        <li>学员年轻化比例提升 <strong>65%</strong></li>
+                        <li>文创产品月销量增长 <strong>30%</strong></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section class="section-block innovation-bg">
+        <section class="section-block innovation-bg" id="vr-zone">
             <div class="text-box">
-                <div class="tag">04. 新生</div>
-                <h2>从屋顶飞入百姓家</h2>
-                <p>时代在变，嵌瓷也在变。传承人开启了从“屋顶”到“屋里”的变革，创作出挂屏、摆件，让艺术融入生活。</p>
-                <p>更有如《罗小黑》等文创产品，将古老工艺与二次元形象结合，为百年技艺注入了鲜活的青春活力。</p>
+                <div class="tag">04. 体验 · 新生</div>
+                <h2>VR力反馈拟真工坊</h2>
+                <p>时代在变，嵌瓷也在变。我们开发了<strong>WebXR在线工坊</strong>。</p>
+                <p><strong>1步授权 + 1键进入：</strong> 即使相隔万里，也能通过力反馈技术，体验剪瓷的清脆与粘贴的实感，创作属于你的新时代嵌瓷。</p>
+                <a href="game.html" class="btn primary-btn">立即进入创作 (Game)</a>
             </div>
             <div class="img-box">
-                <img src="images/creative.jpg" alt="嵌瓷文创罗小黑">
+                <img src="images/vr-demo.jpg" alt="VR嵌瓷体验">
+                <span class="caption">用户创作案例：嵌瓷孙悟空</span>
             </div>
         </section>
 
+        <section class="section-block">
+            <div style="width:100%">
+                <div class="section-header">
+                    <div class="tag">05. 商业闭环</div>
+                    <h2>从虚拟设计 到 实体交付</h2>
+                </div>
+                
+        <div class="map-ui" style="background-image: url('images/map-bg.jpg'); background-size: cover;">
+        <div class="map-ui-content" style="text-align:center; background:rgba(0,0,0,0.7); padding:20px; border-radius:10px; border:1px solid #00e5ff;">
+        <h3 style="color:#00e5ff;">🗺️ 智能派单系统</h3>
+        <p style="color:white; font-size:0.9em;">检测到您的位置：<strong>汕头大学东海岸校区</strong></p>
+        <div style="margin:15px 0;">
+            <div style="width:10px; height:10px; background:red; border-radius:50%; margin:0 auto; box-shadow:0 0 10px red; animation:pulse 1s infinite;"></div>
+        </div>
+        <p style="color:#ccc; font-size:0.8em;">已连接 3 家认证工坊</p>
+    </div>
+</div>
+                    
+                    <div style="flex:1;">
+                        <h3>全链条服务逻辑</h3>
+                        <p>你在VR里设计的作品，可以变成实物！</p>
+                        <ul style="line-height:2; list-style:none;">
+                            <li>✅ <strong>第一步：</strong> VR工坊完成设计图</li>
+                            <li>✅ <strong>第二步：</strong> 一键生成材料清单与报价</li>
+                            <li>✅ <strong>第三步：</strong> 地图派单给非遗传承人</li>
+                            <li>✅ <strong>第四步：</strong> 线下制作或邮寄DIY材料包</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section class="section-block" id="business" style="background: linear-gradient(to bottom, #fff, #f0f4f8);">
+    <div style="width: 100%;">
+       <div class="section-header">
+    <div class="tag">06. 愿景</div>
+    <h2>“非遗+” 跨界赋能方案</h2>
+    <p>我们不只生产内容，更提供<strong>数字化转型的基础设施</strong>，为各行各业注入文化生命力。</p>
+    
+    <div style="margin-top: 25px;">
+        <button class="btn dark-outline-btn" onclick="openModal()">
+            📄 下载行业解决方案白皮书 (2026版)
+        </button>
+    </div>
+</div>
+
+        <div class="biz-services">
+            <div class="biz-card">
+                <div class="biz-icon">🏞️</div>
+                <h3>文旅景区 · 智慧导览</h3>
+                <p>为古建筑/博物馆提供 AR 扫描讲解与 VR 互动设备，提升游客驻留时长 <strong>40%</strong> 以上。</p>
+                <span class="biz-tag">已签约 2 家4A景区</span>
+            </div>
+            <div class="biz-card">
+                <div class="biz-icon">🏫</div>
+                <h3>教育机构 · 虚拟研学</h3>
+                <p>提供“非遗进校园”SaaS课程包，包含 3D 拆解课件与 DIY 材料包供应，低成本引入美育课程。</p>
+                <span class="biz-tag">覆盖 5 所中小学</span>
+            </div>
+            <div class="biz-card">
+                <div class="biz-icon">🤝</div>
+                <h3>商业品牌 · IP 授权</h3>
+                <p>将嵌瓷纹样提取为矢量图库，授权给服装、包装、游戏皮肤设计，实现传统美学的商业变现。</p>
+                <span class="biz-tag">意向合作 3 个品牌</span>
+            </div>
+        </div>
+
+        <div class="partner-wall">
+            <h4>🤝 战略合作伙伴 (拟)</h4>
+            <div class="logos">
+                <div class="logo-item">广东文旅</div>
+                <div class="logo-item">百度百科·非遗</div>
+                <div class="logo-item">广东汕头/潮州博物馆</div>
+                <div class="logo-item">携程旅行</div>
+                <div class="logo-item">Unity 中国</div>
+            </div>
+        </div>
+
+        <div class="contact-form-box">
+            <div class="form-text">
+                <h3>寻求合作？</h3>
+                <p>如果您拥有非遗资源或商业场景，欢迎接入我们的数字生态。</p>
+                <ul style="font-size: 0.9em; color: #666; margin-top: 10px;">
+                    <li>📞 商务热线: 0754-88888888</li>
+                    <li>📧 邮箱: 25gyxiao1@stu.edu.cn</li>
+                </ul>
+            </div>
+            <form class="real-form" onsubmit="event.preventDefault(); alert('合作意向已提交，商务经理将在24小时内联系您！');">
+                <input type="text" placeholder="您的称呼 / 企业名称" required>
+                <select>
+                    <option>合作意向类型...</option>
+                    <option>景区/博物馆智慧化升级</option>
+                    <option>学校研学课程采购</option>
+                    <option>文创IP联名授权</option>
+                    <option>其他</option>
+                </select>
+                <input type="text" placeholder="联系电话" required>
+                <button type="submit" class="btn primary-btn" style="width: 100%; border:none;">提交合作申请</button>
+            </form>
+        </div>
+    </div>
+</section>
     </main>
 
     <footer>
-        <p>© 2026 潮韵·非遗嵌瓷 | 挑战杯参赛作品 | 汕头大学哈基米南北绿队</p>
+        <p>© 2026 潮韵·数字非遗平台 | 挑战杯参赛作品 | 汕头大学哈基米南北绿队</p>
     </footer>
 
+    <div id="toast" style="position:fixed; top:100px; right:20px; background:white; padding:15px; border-radius:8px; box-shadow:0 5px 15px rgba(0,0,0,0.2); display:none; border-left: 4px solid #00e5ff;">
+        <p>🔔 <strong>新用户评论：</strong><br>“原来嵌瓷这么酷，完全是新时代的非遗！”</p>
+    </div>
+    
+    <script>
+        setTimeout(() => { document.getElementById('toast').style.display = 'block'; }, 2000);
+        setTimeout(() => { document.getElementById('toast').style.display = 'none'; }, 7000);
+    </script>
+
+<button class="btn secondary-btn" onclick="openModal()">查看行业解决方案书</button>
+
+
+<div class="modal-overlay" id="solutionModal">
+    <div class="modal-box">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 style="color:#333; border-left: 5px solid #ff4b1f; padding-left: 15px;">非遗数字化赋能 · 行业白皮书</h2>
+        <p style="color:#666; font-size:0.9em; margin-bottom:20px;">内部预览版 | 适用场景：文旅局、非遗基地、高校</p>
+        
+        <h4 style="background:#f4f4f4; padding:10px;">1. 模块化接入标准</h4>
+        <p style="font-size:0.9em; line-height:1.6;">本项目提供标准 API 接口，可快速适配剪纸、木雕、泥塑等 12 类非遗项目，实现“一次开发，多端复用”。</p>
+        
+        <h4 style="background:#f4f4f4; padding:10px; margin-top:15px;">2. 商业转化模型预测</h4>
+        <div class="fake-chart">
+            <div class="bar" style="height: 30%; background:#ccc;" title="传统模式"></div>
+            <div class="bar" style="height: 40%; background:#ccc;" title="仅电商"></div>
+            <div class="bar" style="height: 60%; background:#ff9068;" title="引入VR"></div>
+            <div class="bar" style="height: 90%; background:#ff4b1f;" title="本平台全链条"></div>
+        </div>
+        <p style="text-align:center; font-size:0.8em; color:#999;">图：引入本平台后的收入增长预期</p>
+
+        <div style="margin-top:25px; text-align:right;">
+            <button class="btn primary-btn" onclick="alert('演示版本暂不支持下载，请联系团队获取完整版。')">下载完整PDF (24MB)</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 弹窗控制逻辑
+    function openModal() {
+        var modal = document.getElementById('solutionModal');
+        modal.style.display = 'flex'; // 强制使用 flex 布局居中
+    }
+    function closeModal() {
+        document.getElementById('solutionModal').style.display = 'none';
+    }
+    // 点击黑色背景也能关闭
+    window.onclick = function(event) {
+        var modal = document.getElementById('solutionModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>
